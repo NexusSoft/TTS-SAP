@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36221.1 d17.14
+VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP_TTS", "SAP_TTS.csproj", "{6FC8653A-7D92-48D6-9FEA-974403C3FAFB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9B2E4669-46CD-4D9A-8DDF-464D719EA6C2} = {9B2E4669-46CD-4D9A-8DDF-464D719EA6C2}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeDatos", "..\CapaDeDatos\CapaDeDatos.csproj", "{9B2E4669-46CD-4D9A-8DDF-464D719EA6C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{6FC8653A-7D92-48D6-9FEA-974403C3FAFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FC8653A-7D92-48D6-9FEA-974403C3FAFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FC8653A-7D92-48D6-9FEA-974403C3FAFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B2E4669-46CD-4D9A-8DDF-464D719EA6C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B2E4669-46CD-4D9A-8DDF-464D719EA6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B2E4669-46CD-4D9A-8DDF-464D719EA6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B2E4669-46CD-4D9A-8DDF-464D719EA6C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

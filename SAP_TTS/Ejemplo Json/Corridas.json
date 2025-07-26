@@ -1,0 +1,39 @@
+{
+  "DocDate": "2025-07-25",
+  "DocDueDate": "2025-08-25",
+  "CardCode": "F-Ben000",
+  "NumAtCard": "Lote 2026",
+  "JournalMemo": "Lote 2026",
+  "DocumentLines": [
+    {
+      "ItemCode": "F-37",
+      "Quantity": 2.16,
+      "Price": 52,
+      "TaxCode": "W00",
+      "WarehouseCode": "T-99",
+      "BatchNumbers": [
+        {
+          "BatchNumber": "2026",
+          "Quantity": 2.16,
+          "ManufacturerSerialNumber": "AGUIRRE BAÑOS ENRIQUE ANTONIO",
+          "InternalSerialNumber": "PIÑON 6"
+        }
+      ]
+    },
+    {
+      "ItemCode": "F-180",
+      "Quantity": 10,
+      "Price": 52,
+      "TaxCode": "W00",
+      "WarehouseCode": "T-99",
+      "BatchNumbers": [
+        {
+          "BatchNumber": "2026",
+          "Quantity": 10,
+          "ManufacturerSerialNumber": "AGUIRRE BAÑOS ENRIQUE ANTONIO",
+          "InternalSerialNumber": "PIÑON 6"
+        }
+      ]
+    }
+  ]
+}

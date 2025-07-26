@@ -1,0 +1,100 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
+
+public class BatchNumber
+{
+    public string BatchNumber { get; set; }
+    public double Quantity { get; set; }
+    public string ManufacturerSerialNumber { get; set; }
+    public string InternalSerialNumber { get; set; }
+}
+
+public class DocumentLine
+{
+    public string ItemCode { get; set; }
+    public double Quantity { get; set; }
+    public decimal Price { get; set; }
+    public string TaxCode { get; set; }
+    public string WarehouseCode { get; set; }
+    public List<BatchNumber> BatchNumbers { get; set; }
+}
+
+public class Documento
+{
+    public string DocDate { get; set; }
+    public string DocDueDate { get; set; }
+    public string CardCode { get; set; }
+    public string NumAtCard { get; set; }
+    public string JournalMemo { get; set; }
+    public List<DocumentLine> DocumentLines { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Datos simulados tipo tabla (puedes adaptarlos desde SQL)
+        string[,] filas = new string[,]
+        {
+            // ItemCode, Quantity, Price, TaxCode, WarehouseCode, BatchNumber, Productor, Huerta
+            { "F-37",  "2.16",   "1.00",  "W00", "T-99", "2044", "AGUIRRE BAÑOS ENRIQUE ANTONIO", "PIÑON 6" },
+            { "F-204", "738.00", "43.00", "W00", "T-99", "2044", "AGUIRRE BAÑOS ENRIQUE ANTONIO", "PIÑON 6" },
+            { "F-204", "732.00", "43.00", "W00", "T-99", "2044", "AGUIRRE BAÑOS ENRIQUE ANTONIO", "PIÑON 6" },
+            { "F-204", "812.50", "43.00", "W00", "T-99", "2044", "AGUIRRE BAÑOS ENRIQUE ANTONIO", "PIÑON 6" },
+            { "F-205", "554.40", "35.00", "W00", "T-99", "2044", "AGUIRRE BAÑOS ENRIQUE ANTONIO", "PIÑON 6" }
+            // Puedes agregar más líneas aquí...
+        };
+
+        var documentLines = new List<DocumentLine>();
+
+        for (int i = 0; i < filas.GetLength(0); i++)
+        {
+            string itemCode = filas[i, 0];
+            double quantity = double.Parse(filas[i, 1]);
+            decimal price = decimal.Parse(filas[i, 2]);
+            string taxCode = filas[i, 3];
+            string warehouse = filas[i, 4];
+            string batch = filas[i, 5];
+            string productor = filas[i, 6];
+            string huerta = filas[i, 7];
+
+            var line = new DocumentLine
+            {
+                ItemCode = itemCode,
+                Quantity = quantity,
+                Price = price,
+                TaxCode = taxCode,
+                WarehouseCode = warehouse,
+                BatchNumbers = new List<BatchNumber>
+                {
+                    new BatchNumber
+                    {
+                        BatchNumber = batch,
+                        Quantity = quantity,
+                        ManufacturerSerialNumber = productor,
+                        InternalSerialNumber = huerta
+                    }
+                }
+            };
+
+            documentLines.Add(line);
+        }
+
+        var documento = new Documento
+        {
+            DocDate = "2025-07-19",
+            DocDueDate = "2025-08-18",
+            CardCode = "F-Ben000",
+            NumAtCard = "Lote 2044",
+            JournalMemo = "Lote 2044",
+            DocumentLines = documentLines
+        };
+
+        string json = JsonConvert.SerializeObject(documento, Formatting.Indented);
+        File.WriteAllText("documento.json", json);
+
+        Console.WriteLine("JSON generado exitosamente en documento.json");
+    }
+}
